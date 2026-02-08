@@ -2,10 +2,13 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import joblib
-scaler_old = joblib.load("artifacts/scaler_old.joblib")
-scaler_young = joblib.load("artifacts/scaler_young.joblib")
-model_old = joblib.load("artifacts/model_old.joblib")
-model_young = joblib.load("artifacts/model_young.joblib")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ARTIFACTS_DIR = os.path.join(BASE_DIR, "artifacts")
+
+scaler_old = joblib.load(os.path.join(ARTIFACTS_DIR, "scaler_old.joblib"))
+scaler_young = joblib.load(os.path.join(ARTIFACTS_DIR, "scaler_young.joblib"))
+model_old = joblib.load(os.path.join(ARTIFACTS_DIR, "model_old.joblib"))
+model_young = joblib.load(os.path.join(ARTIFACTS_DIR, "model_young.joblib"))
 
 def calculate_normalised_risk_score(input_df):
     risk_scores = {
